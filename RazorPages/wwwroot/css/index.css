@@ -1,0 +1,91 @@
+﻿html {
+    color: whitesmoke !important;
+    font-size: 1rem;
+}
+
+.lewe_col {
+    background-color: #2e2e2e;
+}
+
+.prawe_col {
+    background-color: #3b3b3b;
+}
+
+.btn {
+    color: whitesmoke;
+    background-color: #3b3b3b;
+}
+
+.btn-add:hover {
+    color: whitesmoke;
+    background-color: #a0cb43;
+}
+
+.btn-edit:hover {
+    color: whitesmoke;
+    background-color: #d5b61e;
+}
+
+.btn-delete:hover {
+    color: whitesmoke;
+    background-color: #c63d3d;
+}
+
+.btn-other:hover {
+    color: whitesmoke;
+    background-color: #2d85bf;
+}
+
+textarea {
+    background-color: #3b3b3b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    resize: none;
+    color: whitesmoke;
+}
+
+ul {
+    list-style: none;
+}
+
+input[type="radio"] {
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: whitesmoke;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+}
+
+ul {
+    list-style: none;
+}
+
+label {
+    margin-left: 10px;
+    color: whitesmoke;
+    font-size: 1.5em;
+}
+
+input[type="radio"] {
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: whitesmoke;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+}
+
+#tiny {
+    background-color: #3b3b3b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    resize: none;
+    color: whitesmoke;
+}

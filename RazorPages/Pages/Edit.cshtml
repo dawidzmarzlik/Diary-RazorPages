@@ -1,0 +1,51 @@
+﻿@page
+@model RazorPages.Pages.EditModel
+@{
+    ViewData["Title"] = "Edytuj wpis";
+
+}
+
+<div class="container-fluid h-100">
+    <form class="h-100" method="post" enctype="multipart/form-data">
+        <div class="row" style="height:15%!important">
+            <div class="col-2 lewe_col d-flex align-items-center">
+                <a class="btn-lg btn-other btn mx-auto mt-5 w-75" asp-area="" asp-page="/index">Powrót</a>
+            </div>
+            <div class="col lewe_col d-flex flex-column h-100">
+                <p class="text-white-50 my-2">Wprowadź tytuł poniżej:</p>
+                <textarea rows="1" required class="h-100" style="font-size: 2.5rem;text-align:center;" asp-for="Pam.Topic"></textarea>
+            </div>
+            <div class="col-2 lewe_col d-flex align-items-center h-100">
+                <button type="submit" class="btn-lg btn-other btn mx-auto mt-5 w-75">Zapisz</button>
+            </div>
+        </div>
+        <div class="row" style="height:85%!important">
+            <div class="col-2 lewe_col d-flex"></div>
+            <div class="col lewe_col d-flex flex-column">
+                <p class="text-white-50 my-2">Wprowadź treść poniżej:</p>
+                <textarea id="tiny" class="h-100" asp-for="Pam.Text"></textarea>
+            </div>
+            <div class="col-2 lewe_col d-flex"></div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.tiny.cloud/1/ox2gfurg1uysh8z401eiy2fdt8jfegpgfd0fhc62mpoql5ds/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea#tiny',
+        content_css: "/css/tiny.css",
+        plugins: 'lists image',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | numlist bullist | link image',
+        branding: false,
+        menubar: 'insert',
+        statusbar: false
+    });
+    // Prevent Bootstrap dialog from blocking focusin
+    document.addEventListener('focusin', (e) => {
+        if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+            e.stopImmediatePropagation();
+        }
+    });
+</script>

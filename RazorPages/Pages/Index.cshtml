@@ -1,0 +1,79 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Pamiętnik";
+}
+
+<form class="h-100" method="post" enctype="multipart/form-data">
+    <div class="container-fluid h-100">
+        <div class="row" style="height:15%!important">
+            <div class="col-4 lewe_col d-flex" style="background-color:#2e2e2e;">
+                <p class="h1 text-light m-auto" style="font-size: 2rem;">Wpisy Patmiętnika:</p>
+            </div>
+            <div class="col prawe_col d-flex" style="background-color:#3b3b3b">
+                @foreach (PamModel Pams in Model.Pams)
+                {
+                    <p class="hide_elem h2 text-light m-auto" name="@Pams.Id" id="@Pams.Id" style="display: none">@Pams.Topic</p>
+                }
+            </div>
+        </div>
+        <div class="row" style="height:70%!important">
+            <div class="col-4 lewe_col d-flex" style="background-color:#2e2e2e">
+                <ul>
+                    @foreach (PamModel Pams in Model.Pams)
+                    {
+                        <li>
+                            <input type="radio" class="radio" name="Wpisy" value="@Pams.Id" id="@Pams.Id" onchange="display(this)" />
+                            <label for="@Pams.Id">@Pams.Topic</label>
+                        </li>
+                    }
+                </ul>
+                <input type="hidden" id="checked_radio" asp-for="@Model.selected_id" />
+            </div>
+            <div class="col prawe_col d-flex flex-column" style="background-color:#3b3b3b">
+                @foreach (PamModel Pams in Model.Pams)
+                {
+                    <div class="hide_elem text-light m-1" name="@Pams.Id" id="@Pams.Id" style="display: none">@Html.Raw(Pams.Text)</div>
+                }
+            </div>
+        </div>
+        <div class="row" style="height:15%!important">
+            <div class="col-4 lewe_col d-flex align-items-center" style="background-color:#2e2e2e">
+                <a class="btn-lg btn btn-add ml-auto w-100" asp-area="" asp-page="/add">Dodaj</a>
+                <button type="button" class="btn-lg btn btn-edit mx-3 w-100" id="przycisk_edit">Edytuj</button>
+                <button type="submit" class="btn-lg btn btn-delete mr-auto w-100">Usuń</button>
+            </div>
+            <div class="col prawe_co d-flex flex-row-reverse" style="background-color:#3b3b3b">
+                @foreach (PamModel Pams in Model.Pams)
+                {
+                    <p class="hide_elem text-light my-auto mr-5" name="@Pams.Id" id="@Pams.Id" style="display: none">@Pams.Datetime</p>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+
+    <script>
+        var selected_id;
+        function display(elem) {
+            if (elem.checked) {
+                document.getElementById('checked_radio').value = elem.id;
+                selected_id = elem.id;
+                let elements = document.getElementsByName(elem.id);
+                elements[0].style.display = "block";
+                elements[1].style.display = "block";
+                elements[2].style.display = "block";
+                elements = document.querySelectorAll('.hide_elem');
+                elements.forEach((element) => {
+                    if (element.id != elem.id) {
+                        element.style.display = "none";
+                    }
+                })
+            }
+        }
+        function EditPage(event) {
+            event.stopPropagation();
+            location.href = "./Edit?edit_id=" + selected_id;
+        }
+        przycisk_edit.addEventListener("click", EditPage);
+    </script>
